@@ -1,0 +1,154 @@
+/* ----------------------
+   Global Styles
+----------------------- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #555;
+    margin-top: 40px;
+}
+
+/* ----------------------
+   File Input Styling
+----------------------- */
+#fileInput {
+    display: none;
+}
+
+.file-upload-label {
+    display: block;
+    padding: 40px 20px;
+    border: 2px dashed #4CAF50;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.file-upload-label:hover,
+.file-upload-label.dragover {
+    background-color: #e8f5e9;
+    border-color: #388e3c;
+    color: #388e3c;
+}
+
+.file-upload-label::before {
+    content: "📁";
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+/* ----------------------
+   Upload Button
+----------------------- */
+#uploadBtn {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#uploadBtn:hover {
+    background-color: #388e3c;
+}
+
+/* ----------------------
+   Upload Item / Progress
+----------------------- */
+.upload-item {
+    margin: 15px 0;
+    text-align: left;
+}
+
+.upload-item strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 8px;
+    background-color: #4CAF50;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* ----------------------
+   Uploaded Files List
+----------------------- */
+#fileList {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+#fileList li {
+    background-color: #f1f1f1;
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#fileList li a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+#fileList li a:hover {
+    text-decoration: underline;
+}
+
+/* ----------------------
+   Toast Notifications
+----------------------- */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px;
+    opacity: 0.9;
+    z-index: 9999;
+    font-weight: 500;
+}
+
+.toast.success { background-color: #4CAF50; }
+.toast.error { background-color: #f44336; }
+.toast.warning { background-color: #ff9800; }
+.toast.info { background-color: #2196F3; }

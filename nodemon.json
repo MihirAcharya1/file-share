@@ -1,0 +1,4 @@
+{
+  "watch": ["index.js", "public", "routes"],
+  "ignore": ["uploads/*", "uploads/tmp/*", "node_modules/*"]
+}
