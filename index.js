@@ -162,13 +162,23 @@ app.post('/upload/complete', (req, res) => {
         const finalDest = path.join(UPLOAD_ROOT, cat, finalName);
 
         const writeStream = fs.createWriteStream(finalDest);
-        for (let i = 1; i <= manifest.totalChunks; i++) {
-            const chunkPath = path.join(TMP_DIR, `${uploadId}.part${i}`);
-            const data = fs.readFileSync(chunkPath);
-            writeStream.write(data);
-            fs.unlinkSync(chunkPath);
-        }
-        writeStream.end();
+
+        (async () => {
+            for (let i = 1; i <= manifest.totalChunks; i++) {
+                const chunkPath = path.join(TMP_DIR, `${uploadId}.part${i}`);
+                await new Promise((resolve, reject) => {
+                    const rs = fs.createReadStream(chunkPath);
+                    rs.pipe(writeStream, { end: false });
+                    rs.on('end', () => {
+                        fs.unlinkSync(chunkPath);
+                        resolve();
+                    });
+                    rs.on('error', reject);
+                });
+            }
+            writeStream.end();
+        })();
+
 
         fs.unlinkSync(manifestPath);
 
